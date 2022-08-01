@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="pure-g-r content-ribbon">
+    <div class="pure-u-1">
+        <h2>Informe seus dados de cadastro</h2>
+        <form class="pure-form pure-form-stacked" method="post" action="{% url 'do_login' %}" autocomplete="off" >
+            {% csrf_token %}
+            <fieldset>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Usuário" required="required" name="username">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="Senha" required="required" name="password">
+                </div>
+                <div class="pure-controls">
+                    <button type="submit" class="pure-button pure-button-primary">Entrar</button>
+                </div>
+            </fieldset>
+            <p>
+                Não é cadastrado? <a href="{% url 'register' %}" title="">Cadastre-se</a> <br />
+                Esqueceu a senha? <a href="{% url 'password_reset' %}" title="">Nova senha</a> <br />
+            </p>
+        </form>
+    </div>
+</div>
+{% endblock %}
