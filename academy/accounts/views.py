@@ -3,6 +3,8 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 
+from academy.courses.models import Enrollment
+
 from django.contrib.auth.forms import PasswordChangeForm, SetPasswordForm
 
 from .forms import RegisterForm, EditAccountForm, PasswordResetForm
@@ -14,7 +16,8 @@ User = get_user_model()
 @login_required
 def dashboard(request):
     template_name = 'accounts/dashboard.html'
-    return render(request, template_name)
+    context = {}
+    return render(request, template_name, context)
 
 
 def do_logout(request):
